@@ -1,0 +1,24 @@
+{
+  "name": "super-simple-stocks",
+  "version": "1.0.0",
+  "description": "simple stocks lib",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/bsan/SuperSimpleStocks.git"
+  },
+  "author": "bsan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/bsan/SuperSimpleStocks/issues"
+  },
+  "homepage": "https://gitlab.com/bsan/SuperSimpleStocks#README",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.4",
+    "typescript": "^2.1.5"
+  }
+}
