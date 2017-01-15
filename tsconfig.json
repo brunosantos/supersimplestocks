@@ -1,8 +1,8 @@
 {
     "files": [
         "src/main.ts",
-        "src/testModule.ts",
-        "test/spec/testSpec.ts"
+        "src/Domain/stock.ts",
+        "test/spec/stockSpec.ts"
     ],
     "compilerOptions": {
         "noImplicitAny": true,
