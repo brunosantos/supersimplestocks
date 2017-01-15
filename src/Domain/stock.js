@@ -3,18 +3,23 @@ var superSimpleStocks;
 (function (superSimpleStocks) {
     var Domain;
     (function (Domain) {
-        var Stock = (function () {
-            function Stock(symbol, type) {
+        var CommonStock = (function () {
+            function CommonStock(symbol, parValue, lastDividend) {
                 this.symbol = symbol;
-                this.type = type;
+                this.parValue = parValue;
+                this.lastDividend = lastDividend;
             }
-            return Stock;
+            return CommonStock;
         }());
-        Domain.Stock = Stock;
-        var stockType;
-        (function (stockType) {
-            stockType[stockType["Common"] = 1] = "Common";
-            stockType[stockType["Preferred"] = 2] = "Preferred";
-        })(stockType = Domain.stockType || (Domain.stockType = {}));
+        Domain.CommonStock = CommonStock;
+        var PreferredStock = (function () {
+            function PreferredStock(symbol, parValue, fixedDividend) {
+                this.symbol = symbol;
+                this.parValue = parValue;
+                this.fixedDividend = fixedDividend;
+            }
+            return PreferredStock;
+        }());
+        Domain.PreferredStock = PreferredStock;
     })(Domain = superSimpleStocks.Domain || (superSimpleStocks.Domain = {}));
 })(superSimpleStocks || (superSimpleStocks = {}));

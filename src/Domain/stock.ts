@@ -2,16 +2,14 @@
 namespace superSimpleStocks.Domain {
     export interface IStock {
         readonly symbol: string;
-        readonly type:stockType;
+        readonly parValue:number;
     }
-    export class Stock implements IStock {
-        constructor(public symbol:string,
-        public type: stockType) {            
-            
+    export class CommonStock implements IStock {
+        constructor(public symbol:string, public parValue:number, public lastDividend: number) {
         }        
     }
-    export enum stockType {
-        Common = 1,
-        Preferred
+    export class PreferredStock implements IStock {
+        constructor(public symbol:string, public parValue:number, public fixedDividend: number) {            
+        }        
     }
 }

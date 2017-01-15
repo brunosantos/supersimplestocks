@@ -2,7 +2,8 @@
     "files": [
         "src/main.ts",
         "src/Domain/stock.ts",
-        "test/spec/stockSpec.ts"
+        "test/spec/stockSpec.ts",
+        "test/spec/calculatorSpec.ts"
     ],
     "compilerOptions": {
         "noImplicitAny": true,
