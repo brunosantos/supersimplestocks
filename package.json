@@ -4,7 +4,11 @@
   "description": "simple stocks lib",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "gulp",
+    "test": "gulp test",
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server \" ",
+    "typings": "typings",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
@@ -17,8 +21,14 @@
   },
   "homepage": "https://gitlab.com/bsan/SuperSimpleStocks#README",
   "devDependencies": {
+    "concurrently": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.1.4",
-    "typescript": "^2.1.5"
+    "gulp-util": "^3.0.8",
+    "jasmine": "^2.5.3",
+    "lite-server": "^2.2.2",
+    "typescript": "^2.1.5",
+    "typings": "^2.1.0",
+    "watchify": "^3.8.0"
   }
 }
