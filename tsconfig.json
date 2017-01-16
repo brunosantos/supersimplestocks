@@ -4,10 +4,8 @@
         "src/Domain/stock.ts",
         "src/Services/calculator.ts",
         "src/Services/stockService.ts",
-        "src/Data/stockRepo.ts",
         "test/spec/stockSpec.ts",
-        "test/spec/stockRepoSpec.ts",
-        "test/spec/calculatorSpec.ts"
+        "test/spec/dividendYieldCalculatorSpec.ts"
     ],
     "compilerOptions": {
         "noImplicitAny": true,

@@ -11,9 +11,15 @@ var superSimpleStocks;
         var dividendYieldCalculator = (function () {
             function dividendYieldCalculator() {
             }
+            dividendYieldCalculator.prototype._toPennies = function (price) {
+                return price * 100;
+            };
+            dividendYieldCalculator.prototype._toFullCurrency = function (price) {
+                return price / 100;
+            };
             dividendYieldCalculator.prototype.run = function (stock, marketPrice) {
                 //stock instanceof Stock;
-                return stock.lastDividend / marketPrice;
+                return this._toFullCurrency(stock.lastDividend) / marketPrice;
             };
             return dividendYieldCalculator;
         }());
