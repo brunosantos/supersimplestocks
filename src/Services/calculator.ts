@@ -7,11 +7,13 @@
 
 namespace superSimpleStocks.Services {
     export interface ICalculator {
-        run(lastDividend:number, marketPrice:number): number;
+        run(stock:superSimpleStocks.Domain.IStock, marketPrice: number): number;
     }
+    //calculator factory.
     export class dividendYieldCalculator implements ICalculator {
-        public run(lastDividend:number, marketPrice:number){
-            return 0;
+        public run(stock:superSimpleStocks.Domain.Stock, marketPrice: number){
+            //stock instanceof Stock;
+            return stock.lastDividend/marketPrice;
         }
     }
 }
