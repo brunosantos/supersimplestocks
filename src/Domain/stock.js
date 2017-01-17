@@ -9,18 +9,18 @@ var superSimpleStocks;
     var Domain;
     (function (Domain) {
         var Stock = (function () {
-            function Stock(symbol, parValue, lastDividend) {
+            function Stock(symbol, lastDividend, parValue) {
                 this.symbol = symbol;
-                this.parValue = parValue;
                 this.lastDividend = lastDividend;
+                this.parValue = parValue;
             }
             return Stock;
         }());
         Domain.Stock = Stock;
         var PreferredStock = (function (_super) {
             __extends(PreferredStock, _super);
-            function PreferredStock(symbol, parValue, lastDividend, fixedDividend) {
-                var _this = _super.call(this, symbol, parValue, lastDividend) || this;
+            function PreferredStock(symbol, lastDividend, fixedDividend, parValue) {
+                var _this = _super.call(this, symbol, lastDividend, parValue) || this;
                 _this.fixedDividend = fixedDividend;
                 return _this;
             }

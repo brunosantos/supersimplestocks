@@ -5,12 +5,12 @@ namespace superSimpleStocks.Domain {
         readonly parValue:number;
     }
     export class Stock implements IStock {
-        constructor(public symbol:string, public parValue:number, public lastDividend: number) {
+        constructor(public symbol:string, public lastDividend: number, public parValue:number) {
         }        
     }
     export class PreferredStock extends Stock {
-        constructor(symbol:string, parValue:number, lastDividend: number, public fixedDividend: number) { 
-            super(symbol,parValue,lastDividend);           
+        constructor(symbol:string,  lastDividend: number, public fixedDividend: number, parValue:number) { 
+            super(symbol,lastDividend,parValue);           
         }        
     }
 }
