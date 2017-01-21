@@ -1,5 +1,5 @@
 'use strict';
-namespace superSimpleStocks.Domain {
+namespace Domain {
     export interface IStock {
         readonly symbol: string;
         readonly parValue:number;

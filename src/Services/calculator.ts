@@ -5,24 +5,31 @@
 // When I calculate the dividend yield
 // I should get the result of Fixed Dividend . Par Value/Market Price
 
-namespace superSimpleStocks.Services {
+namespace Services {
     export interface IStockCalculator {
-        run(stock:superSimpleStocks.Domain.IStock, marketPrice: number): number;
+        run(stock:Domain.IStock, marketPrice: number): number;
     }
 
     //calculator factory.
     export class dividendYieldCalculator implements IStockCalculator {
-         private _toPennies(price: number){
+         private toPennies(price: number){
             return price * 100;
         }
 
-        private _toFullCurrency(price: number){
+        private toFullCurrency(price: number){
             return price / 100;
         }
 
-        public run(stock:superSimpleStocks.Domain.Stock, marketPrice: number){
+        private isValid(marketPrice:number){
+            return marketPrice>0;
+        }
+
+        public run(stock:Domain.Stock, marketPrice: number){
+            if(!this.isValid(marketPrice)){
+                return 0;
+            }
             //stock instanceof Stock;
-            return this._toFullCurrency(stock.lastDividend)/marketPrice;
+            return this.toFullCurrency(stock.lastDividend)/marketPrice;
         }
     }
 }
