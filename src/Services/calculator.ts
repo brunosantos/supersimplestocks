@@ -11,16 +11,8 @@ namespace Services {
     }
 
     //calculator factory.
-    export class dividendYieldCalculator implements IStockCalculator {
-         private toPennies(price: number){
-            return price * 100;
-        }
-
-        private toFullCurrency(price: number){
-            return price / 100;
-        }
-
-        private isValid(marketPrice:number){
+    export class DividendYieldCalculator implements IStockCalculator {
+        protected isValid(marketPrice:number){
             return marketPrice>0;
         }
 
@@ -28,8 +20,23 @@ namespace Services {
             if(!this.isValid(marketPrice)){
                 return 0;
             }
-            //stock instanceof Stock;
-            return this.toFullCurrency(stock.lastDividend)/marketPrice;
+            
+            if (stock instanceof Domain.PreferredStock) {
+                return CommonDividendYieldCalculator.run(stock,marketPrice);
+            }
+            return PreferedDividendYieldCalculator.run(stock,marketPrice);
+        }
+    }
+
+    export class PreferedDividendYieldCalculator extends DividendYieldCalculator {
+        public static run(stock:Domain.Stock, marketPrice: number){
+            return stock.lastDividend/marketPrice;
+        }
+    }
+
+    export class CommonDividendYieldCalculator extends DividendYieldCalculator {
+        public static run(stock:Domain.PreferredStock, marketPrice: number){
+            return stock.fixedDividend*stock.parValue/marketPrice;
         }
     }
 }

@@ -5,21 +5,21 @@ describe("Given a Stock symbol of type Common", function() {
     describe("and a market price as input", function() {
         let marketPrice = 100;
         it("When I calculate the dividend yield", function() {            
-            let dividendYieldCalculator = new Services.dividendYieldCalculator();
-            expect(dividendYieldCalculator.run(simpleStock,marketPrice)).toBe(0.0008);
+            let dividendYieldCalculator = new Services.DividendYieldCalculator();
+            expect(dividendYieldCalculator.run(simpleStock,marketPrice)).toBe(0.08);
         });
     });
     describe("and a market price as input of -1", function() {
         let marketPrice = -1;
         it("When I calculate the dividend yield", function() {            
-            let dividendYieldCalculator = new Services.dividendYieldCalculator();
+            let dividendYieldCalculator = new Services.DividendYieldCalculator();
             expect(dividendYieldCalculator.run(simpleStock,marketPrice)).toBe(0);
         });
     });
     describe("and a market price as input of 0", function() {
         let marketPrice = 0;
         it("When I calculate the dividend yield", function() {            
-            let dividendYieldCalculator = new Services.dividendYieldCalculator();
+            let dividendYieldCalculator = new Services.DividendYieldCalculator();
             expect(dividendYieldCalculator.run(simpleStock,marketPrice)).toBe(0);
         });
     });
@@ -30,21 +30,21 @@ describe("Given a Stock symbol of type Preferred", function() {
     describe("and a market price as input", function() {
         let marketPrice = 115;
         it("When I calculate the dividend yield", function() {            
-            let dividendYieldCalculator = new Services.dividendYieldCalculator();
-            expect(dividendYieldCalculator.run(simpleStock,marketPrice)).toBe(0.0006956521739130435);
+            let dividendYieldCalculator = new Services.DividendYieldCalculator();
+            expect(dividendYieldCalculator.run(simpleStock,marketPrice)).toBe(1.7391304347826086);
         });
     });
     describe("and a market price as input of 0", function() {
         let marketPrice = 0;
         it("When I calculate the dividend yield", function() {            
-            let dividendYieldCalculator = new Services.dividendYieldCalculator();
+            let dividendYieldCalculator = new Services.DividendYieldCalculator();
             expect(dividendYieldCalculator.run(simpleStock,marketPrice)).toBe(0);
         });
     });
     describe("and a market price as input of -1", function() {
         let marketPrice = -1;
         it("When I calculate the dividend yield", function() {            
-            let dividendYieldCalculator = new Services.dividendYieldCalculator();
+            let dividendYieldCalculator = new Services.DividendYieldCalculator();
             expect(dividendYieldCalculator.run(simpleStock,marketPrice)).toBe(0);
         });
     });
