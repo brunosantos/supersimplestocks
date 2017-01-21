@@ -10,7 +10,6 @@ namespace Services {
         run(stock:Domain.IStock, marketPrice: number): number;
     }
 
-    //calculator factory.
     export class DividendYieldCalculator implements IStockCalculator {
         protected isValid(marketPrice:number){
             return marketPrice>0;
@@ -37,6 +36,19 @@ namespace Services {
     export class CommonDividendYieldCalculator extends DividendYieldCalculator {
         public static run(stock:Domain.PreferredStock, marketPrice: number){
             return stock.fixedDividend*stock.parValue/marketPrice;
+        }
+    }
+
+    export class PERatioCalculator implements IStockCalculator {
+        protected isValid(marketPrice:number){
+            return marketPrice>0;
+        }
+
+        public run(stock:Domain.Stock, marketPrice: number){
+            if(!this.isValid(marketPrice)){
+                return 0;
+            }            
+            return marketPrice/stock.lastDividend;
         }
     }
 }

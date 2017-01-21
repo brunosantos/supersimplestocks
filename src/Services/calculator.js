@@ -10,7 +10,6 @@ var __extends = (this && this.__extends) || function (d, b) {
 // I should get the result of Fixed Dividend . Par Value/Market Price
 var Services;
 (function (Services) {
-    //calculator factory.
     var DividendYieldCalculator = (function () {
         function DividendYieldCalculator() {
         }
@@ -51,4 +50,19 @@ var Services;
         return CommonDividendYieldCalculator;
     }(DividendYieldCalculator));
     Services.CommonDividendYieldCalculator = CommonDividendYieldCalculator;
+    var PERatioCalculator = (function () {
+        function PERatioCalculator() {
+        }
+        PERatioCalculator.prototype.isValid = function (marketPrice) {
+            return marketPrice > 0;
+        };
+        PERatioCalculator.prototype.run = function (stock, marketPrice) {
+            if (!this.isValid(marketPrice)) {
+                return 0;
+            }
+            return marketPrice / stock.lastDividend;
+        };
+        return PERatioCalculator;
+    }());
+    Services.PERatioCalculator = PERatioCalculator;
 })(Services || (Services = {}));
