@@ -21,5 +21,13 @@ namespace Data {
         public Contains(trade:Domain.ITrade){
             return this.tradeData.find(t => t.Equals(trade))!==undefined;
         }
+
+        public GetWithinDateRange(startDate:Date, endDate:Date){
+            let filteredTradeData:Array<Domain.ITrade>= new Array<Domain.ITrade>();
+            for (let trade of this.tradeData) {
+                
+            }
+            return filteredTradeData;
+        }
     }
 }

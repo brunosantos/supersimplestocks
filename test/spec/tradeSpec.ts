@@ -29,5 +29,19 @@ describe("Given a Stock symbol and a timestamp and quantity and price and tradeT
                 expect(trade.Equals(trade2)).toBe(false);
             });
         });
+        describe("and I provide StartDate and EndDate inside the trade date When I call IsWithinDateRange", function() {
+            let startDate = new Date(2017, 1, 17, 9, 20, 0);
+            let endDate = new Date(2017, 1, 17, 9, 29, 0);
+            it("it should be true", function() {
+                expect(trade.IsWithinDateRange(startDate,endDate)).toBe(true);
+            });
+        });
+        describe("and I provide StartDate and EndDate outside the trade date When I call IsWithinDateRange", function() {
+            let startDate = new Date(2017, 1, 17, 9, 10, 0);
+            let endDate = new Date(2017, 1, 17, 9, 15, 0);
+            it("it should be false", function() {
+                expect(trade.IsWithinDateRange(startDate,endDate)).toBe(false);
+            });
+        });
     });
 });

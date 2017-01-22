@@ -26,6 +26,9 @@ var Domain;
             }
             return false;
         }
+        IsWithinDateRange(startDate, endDate) {
+            return this.timeStamp >= startDate && this.timeStamp < endDate;
+        }
     }
     Domain.Trade = Trade;
 })(Domain || (Domain = {}));

@@ -14,6 +14,12 @@ var Data;
         Contains(trade) {
             return this.tradeData.find(t => t.Equals(trade)) !== undefined;
         }
+        GetWithinDateRange(startDate, endDate) {
+            let filteredTradeData = new Array();
+            for (let trade of this.tradeData) {
+            }
+            return filteredTradeData;
+        }
     }
     Data.TradeRepository = TradeRepository;
 })(Data || (Data = {}));

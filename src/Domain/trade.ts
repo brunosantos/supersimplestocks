@@ -27,5 +27,9 @@ namespace Domain {
             }
             return false;
         }    
+
+        public IsWithinDateRange(startDate:Date, endDate:Date):boolean{
+            return this.timeStamp>=startDate && this.timeStamp < endDate;
+        }
     }
 }
