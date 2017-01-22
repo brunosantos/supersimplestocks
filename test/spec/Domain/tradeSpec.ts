@@ -1,4 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
 
 describe("Given a Stock symbol and a timestamp and quantity and price and tradeType", function() {
     let stockSymbol = "TEA";

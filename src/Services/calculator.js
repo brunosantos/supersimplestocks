@@ -40,4 +40,23 @@ var Services;
         }
     }
     Services.PERatioCalculator = PERatioCalculator;
+    class VWSPCalculator {
+        constructor(tradeRepository) {
+            this._tradeRepository = tradeRepository;
+        }
+        run(stockSymbol, tradeRange) {
+            let trades = this._tradeRepository.GetWithinDateRange(tradeRange.startDate, tradeRange.endDate);
+            let fundsTradedSum = 0;
+            let quantitySum = 0;
+            for (let trade of trades) {
+                fundsTradedSum += trade.getFundsTraded();
+                quantitySum += trade.quantity;
+            }
+            if (quantitySum < 1) {
+                return 0;
+            }
+            return fundsTradedSum / quantitySum;
+        }
+    }
+    Services.VWSPCalculator = VWSPCalculator;
 })(Services || (Services = {}));

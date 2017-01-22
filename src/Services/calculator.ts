@@ -51,4 +51,27 @@ namespace Services {
             return marketPrice/stock.lastDividend;
         }
     }
+
+    export class VWSPCalculator {
+        private _tradeRepository:Data.TradeRepository;
+        constructor(tradeRepository:Data.TradeRepository) {
+            this._tradeRepository = tradeRepository;            
+        }
+
+        public run(stockSymbol:string, tradeRange:Domain.DateRange){
+            let trades = this._tradeRepository.GetWithinDateRange(tradeRange.startDate,tradeRange.endDate);           
+            let fundsTradedSum = 0;
+            let quantitySum = 0;
+            for (let trade of trades) {
+                fundsTradedSum += trade.getFundsTraded();
+                quantitySum += trade.quantity;
+            }
+
+            if(quantitySum<1){
+                return 0;
+            }
+
+            return fundsTradedSum/quantitySum;
+        }
+    }
 }

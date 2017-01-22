@@ -1,4 +1,4 @@
-/// <reference path="../../typings/index.d.ts" />
+
 //iii.	Record a trade, with timestamp, quantity of shares, buy or sell indicator and trade price
 
 describe("Given a Stock symbol", function() {

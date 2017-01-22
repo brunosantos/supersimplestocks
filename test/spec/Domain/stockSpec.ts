@@ -1,4 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
 
 describe("Given a Stock symbol", function() {
     it("When I create a stock of type Common", function() {

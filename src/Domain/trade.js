@@ -29,6 +29,9 @@ var Domain;
         IsWithinDateRange(startDate, endDate) {
             return this.timeStamp >= startDate && this.timeStamp < endDate;
         }
+        getFundsTraded() {
+            return this.price * this.quantity;
+        }
     }
     Domain.Trade = Trade;
 })(Domain || (Domain = {}));

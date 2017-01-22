@@ -1,4 +1,3 @@
-// /// <reference path="../../typings/index.d.ts" />
 
 // describe("Given a Stock symbol of type Common", function() {
 //     let simpleStock = new Domain.Stock('POP', 8, 100);
