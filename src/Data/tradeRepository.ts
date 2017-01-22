@@ -25,7 +25,9 @@ namespace Data {
         public GetWithinDateRange(startDate:Date, endDate:Date){
             let filteredTradeData:Array<Domain.ITrade>= new Array<Domain.ITrade>();
             for (let trade of this.tradeData) {
-                
+                if(trade.IsWithinDateRange(startDate,endDate)){
+                    filteredTradeData.push(trade);
+                }
             }
             return filteredTradeData;
         }

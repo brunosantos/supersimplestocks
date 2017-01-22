@@ -10,6 +10,7 @@ namespace Domain {
         type:TradeType;
         price:number;
         Equals(trade:ITrade):boolean;
+        IsWithinDateRange(startDate:Date, endDate:Date):boolean;
     }
     export class Trade implements ITrade {
         constructor(public stockSymbol:string, public timeStamp:Date, public quantity:number, public type:TradeType, public price:number) {

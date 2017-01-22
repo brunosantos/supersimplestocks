@@ -17,6 +17,9 @@ var Data;
         GetWithinDateRange(startDate, endDate) {
             let filteredTradeData = new Array();
             for (let trade of this.tradeData) {
+                if (trade.IsWithinDateRange(startDate, endDate)) {
+                    filteredTradeData.push(trade);
+                }
             }
             return filteredTradeData;
         }
