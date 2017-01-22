@@ -1,15 +1,21 @@
 {
-    "files": [
-        "src/main.ts",
-        "src/Domain/stock.ts",
-        "src/Services/calculator.ts",
-        "src/Services/stockService.ts",
-        "test/spec/stockSpec.ts",
-        "test/spec/dividendYieldCalculatorSpec.ts",
-        "test/spec/pERatioCalculatorSpec.ts"
-    ],
     "compilerOptions": {
         "noImplicitAny": true,
-        "target": "es5"
-    }
+        "target": "es6",
+        // "module": "system",
+        "removeComments": true,
+        "preserveConstEnums": true
+        // "outFile": "out/app.js",
+        // "sourceMap": true
+    },
+    "include": [
+        "src/**/*",
+        "test/**/*"
+    ],
+    "exclude": [
+     "node_modules",
+     "out",
+     "typings/browser.d.ts",
+     "typings/browser/**"
+ ]
 }
