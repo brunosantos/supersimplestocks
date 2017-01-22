@@ -34,4 +34,11 @@ var Domain;
         }
     }
     Domain.Trade = Trade;
+    class DateRange {
+        constructor(startDate, endDate) {
+            this.startDate = startDate;
+            this.endDate = endDate;
+        }
+    }
+    Domain.DateRange = DateRange;
 })(Domain || (Domain = {}));
