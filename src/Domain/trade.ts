@@ -10,7 +10,7 @@ namespace Domain {
         type:TradeType;
         price:number;
         Equals(trade:ITrade):boolean;
-        IsWithinDateRange(startDate:Date, endDate:Date):boolean;
+        IsWithinDateRange(dateRange:IDateRange):boolean;
         getFundsTraded():number;
     }
     export class Trade implements ITrade {
@@ -30,8 +30,8 @@ namespace Domain {
             return false;
         }    
 
-        public IsWithinDateRange(startDate:Date, endDate:Date):boolean{
-            return this.timeStamp>=startDate && this.timeStamp < endDate;
+        public IsWithinDateRange(dateRange:IDateRange):boolean{
+            return this.timeStamp>=dateRange.startDate && this.timeStamp < dateRange.endDate;
         }
 
         public getFundsTraded():number{

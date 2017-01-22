@@ -2,20 +2,20 @@
 //iii.	Record a trade, with timestamp, quantity of shares, buy or sell indicator and trade price
 
 describe("Given a Stock symbol", function() {
-    let stockSymbol = "TEA";    
+    let stockSymbol = "ALE";    
     describe("and a set of saved Trades and a DateRange of 15 minutes from now", function() {
-        let dateNow = new Date(Date.now);
-        let dateNowMinus15m = dateNow;
-        dateNowMinus15m.setMinutes(dateNowMinus15m.getMinutes()-15);
+        let dateNow = new Date(Date.now());
+        let dateNowMinus15m =  new Date(dateNow);
+        dateNowMinus15m.setMinutes(dateNow.getMinutes()-15);
 
-        let dateNowMinus14m = dateNow;
-        dateNowMinus14m.setMinutes(dateNowMinus15m.getMinutes()-15);
+        let dateNowMinus14m = new Date(dateNow);;
+        dateNowMinus14m.setMinutes(dateNow.getMinutes()-14);
 
-        let dateNowMinus13m = dateNow;
-        dateNowMinus13m.setMinutes(dateNowMinus15m.getMinutes()-15);
+        let dateNowMinus13m = new Date(dateNow);;
+        dateNowMinus13m.setMinutes(dateNow.getMinutes()-13);
 
-        let dateNowMinus5m = dateNow;
-        dateNowMinus5m.setMinutes(dateNowMinus15m.getMinutes()-15);
+        let dateNowMinus5m = new Date(dateNow);;
+        dateNowMinus5m.setMinutes(dateNow.getMinutes()-5);
 
         let trade1 = new Domain.Trade('ALE', new Date(2017, 1, 15, 9, 8, 0),10,Domain.TradeType.Buy,100);
         let trade2 = new Domain.Trade('ALE', dateNowMinus15m,23,Domain.TradeType.Buy,130);   
@@ -38,7 +38,7 @@ describe("Given a Stock symbol", function() {
 
         it("it should calculate the Volume Weighted Stock Price", function() {          
             let vWSPCalculator = new Services.VWSPCalculator(tradeRepo);
-            expect(vWSPCalculator.run(stockSymbol,range)).toBe(0);
+            expect(vWSPCalculator.run(stockSymbol,range)).toBe(101.25);
         }); 
     });
 });

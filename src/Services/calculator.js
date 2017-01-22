@@ -44,13 +44,19 @@ var Services;
         constructor(tradeRepository) {
             this._tradeRepository = tradeRepository;
         }
-        run(stockSymbol, tradeRange) {
-            let trades = this._tradeRepository.GetWithinDateRange(tradeRange.startDate, tradeRange.endDate);
+        run(stockSymbol, dateRange) {
+            let trades = this._tradeRepository.GetWithinDateRange(stockSymbol, dateRange);
             let fundsTradedSum = 0;
             let quantitySum = 0;
             for (let trade of trades) {
-                fundsTradedSum += trade.getFundsTraded();
-                quantitySum += trade.quantity;
+                if (trade.type === Domain.TradeType.Buy) {
+                    fundsTradedSum += trade.getFundsTraded();
+                    quantitySum += trade.quantity;
+                }
+                else {
+                    fundsTradedSum -= trade.getFundsTraded();
+                    quantitySum -= trade.quantity;
+                }
             }
             if (quantitySum < 1) {
                 return 0;

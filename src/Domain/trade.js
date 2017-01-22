@@ -26,8 +26,8 @@ var Domain;
             }
             return false;
         }
-        IsWithinDateRange(startDate, endDate) {
-            return this.timeStamp >= startDate && this.timeStamp < endDate;
+        IsWithinDateRange(dateRange) {
+            return this.timeStamp >= dateRange.startDate && this.timeStamp < dateRange.endDate;
         }
         getFundsTraded() {
             return this.price * this.quantity;

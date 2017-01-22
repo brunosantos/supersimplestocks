@@ -50,9 +50,11 @@ describe("Given a set of saved Trades and a startDate and EndDate", function() {
     tradeRepo.Save(trade3);
     tradeRepo.Save(trade4);
     tradeRepo.Save(trade5);
+
+    let dateRange = new Domain.DateRange(new Date(2017, 1, 15, 9, 8, 0),new Date(2017, 1, 15, 9, 16, 0));
     describe("When you GetWithinDateRange", function() {   
         it("it should return only the trades within that DateRange", function() { 
-            let trades = tradeRepo.GetWithinDateRange(new Date(2017, 1, 15, 9, 8, 0),new Date(2017, 1, 15, 9, 16, 0));
+            let trades = tradeRepo.GetWithinDateRange('ALE',dateRange);
             expect(trades.length).toBe(3);
         });
     });

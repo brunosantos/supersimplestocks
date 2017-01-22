@@ -22,10 +22,13 @@ namespace Data {
             return this.tradeData.find(t => t.Equals(trade))!==undefined;
         }
 
-        public GetWithinDateRange(startDate:Date, endDate:Date){
+        public GetWithinDateRange(stockSymbol:string, dateRange:Domain.DateRange){
             let filteredTradeData:Array<Domain.ITrade>= new Array<Domain.ITrade>();
             for (let trade of this.tradeData) {
-                if(trade.IsWithinDateRange(startDate,endDate)){
+                if(trade.stockSymbol!==stockSymbol){
+                    break;
+                }
+                if(trade.IsWithinDateRange(dateRange)){
                     filteredTradeData.push(trade);
                 }
             }
