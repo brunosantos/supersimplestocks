@@ -3,9 +3,17 @@ var Data;
 (function (Data) {
     class StockRepository {
         constructor() {
-            this.data = new Map();
+            this.stockData = new Map();
         }
-        SaveStock(stock) {
+        Save(stock) {
+            this.stockData.set(stock.symbol, stock);
+            return this;
+        }
+        Get(stock) {
+            return this.stockData.get(stock.symbol);
+        }
+        Count() {
+            return this.stockData.size;
         }
     }
     Data.StockRepository = StockRepository;
