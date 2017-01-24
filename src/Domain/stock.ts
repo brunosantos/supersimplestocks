@@ -8,7 +8,7 @@ namespace Domain {
         constructor(public symbol:string, public lastDividend: number, public parValue:number) {
         }        
     }
-    export class PreferredStock extends Stock {
+    export class PreferredStock extends Stock implements IStock  {
         constructor(symbol:string,  lastDividend: number, public fixedDividend: number, parValue:number) { 
             super(symbol,lastDividend,parValue);           
         }        

@@ -3,24 +3,24 @@
 // import _ from "lodash";
 namespace Data {
     export interface IStockRepository{
-        Save(stock:Domain.IStock):IStockRepository;
-        Get(stock:Domain.IStock):Domain.IStock;
+        Save(stock:Domain.Stock):IStockRepository;
+        Get(stockSymbol:string):Domain.Stock;
         Count():number;
     }
     export class StockRepository implements IStockRepository {
-        private stockData:Map<string,Domain.IStock>;
+        private stockData:Map<string,Domain.Stock>;
 
         constructor() {            
-            this.stockData = new Map<string,Domain.IStock>();
+            this.stockData = new Map<string,Domain.Stock>();
         }
 
-        public Save(stock:Domain.IStock){  
+        public Save(stock:Domain.Stock){  
             this.stockData.set(stock.symbol,stock);
             return this;
         }
 
-        public Get(stock:Domain.IStock){  
-            return this.stockData.get(stock.symbol);
+        public Get(stockSymbol:string){  
+            return this.stockData.get(stockSymbol);
         }
 
         public Count(){  

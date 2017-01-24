@@ -36,7 +36,7 @@ describe("Given a Stock symbol", function() {
 
         let range = new Domain.DateRange(dateNowMinus15m,dateNow);
 
-        it("it should calculate the Volume Weighted Stock Price", function() {          
+        it("it should calculate the Volume Weighted Stock Price", function() {     
             let vWSPCalculator = new Services.VWSPCalculator(tradeRepo);
             expect(vWSPCalculator.run(stockSymbol,range)).toBe(101.25);
         }); 

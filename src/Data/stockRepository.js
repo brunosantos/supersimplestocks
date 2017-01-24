@@ -9,8 +9,8 @@ var Data;
             this.stockData.set(stock.symbol, stock);
             return this;
         }
-        Get(stock) {
-            return this.stockData.get(stock.symbol);
+        Get(stockSymbol) {
+            return this.stockData.get(stockSymbol);
         }
         Count() {
             return this.stockData.size;
