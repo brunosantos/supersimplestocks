@@ -5,10 +5,14 @@
   "main": "main.js",
   "scripts": {
     "gulp": "gulp",
-    "test": "gulp test",
+    "test": "tsc && concurrently \"tsc -w\" \"lite-server \" ",
     "start": "tsc && concurrently \"tsc -w\" \"lite-server \" ",
     "typings": "typings",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "precompile": "npm run clean",
+    "clean": "rimraf lib/*",
+    "compile": "npm run compile:ts",
+    "compile:ts": "tsc --outDir ./out --module commonjs ./src/main.ts"
   },
   "repository": {
     "type": "git",
@@ -27,6 +31,7 @@
     "gulp-util": "^3.0.8",
     "jasmine": "^2.5.3",
     "lite-server": "^2.2.2",
+    "rimraf": "^2.5.4",
     "typescript": "^2.1.5",
     "typings": "^2.1.0",
     "watchify": "^3.8.0"

@@ -2,11 +2,11 @@
     "compilerOptions": {
         "noImplicitAny": true,
         "target": "es6",
-        // "module": "system",
+        // "module": "commonjs",
         "removeComments": true,
-        "preserveConstEnums": true
+        "preserveConstEnums": true,
         // "outFile": "out/app.js",
-        // "sourceMap": true
+        "sourceMap": true
     },
     "include": [
         "typings/index.d.ts",
