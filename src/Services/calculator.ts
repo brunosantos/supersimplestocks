@@ -1,13 +1,17 @@
 'use strict'
 
-// Given a Stock with type Preferred,
-// and a market price
-// When I calculate the dividend yield
-// I should get the result of Fixed Dividend . Par Value/Market Price
-
 namespace Services {
     export interface IStockCalculator {
-        run(stock:Domain.IStock, marketPrice: number): number;
+        run(stock:Domain.Stock, marketPrice: number): number;
+    }
+
+    export class DividendYieldCalculatorFactory {
+        public static create(stock:Domain.IStock){
+            if (PreferedDividendYieldCalculator.Handles(stock)) {
+                return new PreferedDividendYieldCalculator();
+            }
+            return new CommonDividendYieldCalculator();
+        }
     }
 
     export class DividendYieldCalculator implements IStockCalculator {
@@ -15,27 +19,38 @@ namespace Services {
             return marketPrice>0;
         }
 
+        public static Handles(stock:Domain.IStock):boolean{
+            return false;
+        }
+
         public run(stock:Domain.Stock, marketPrice: number){
-            if(!this.isValid(marketPrice)){
+            if(!stock || !this.isValid(marketPrice)){
                 return 0;
             }
-            
-            if (stock instanceof Domain.PreferredStock) {
-                return CommonDividendYieldCalculator.run(stock,marketPrice);
-            }
-            return PreferedDividendYieldCalculator.run(stock,marketPrice);
+
+            return DividendYieldCalculatorFactory.create(stock).run(stock,marketPrice);
         }
     }
 
-    export class PreferedDividendYieldCalculator extends DividendYieldCalculator {
-        public static run(stock:Domain.Stock, marketPrice: number){
+    class CommonDividendYieldCalculator extends DividendYieldCalculator {
+        public static Handles(stock:Domain.IStock):boolean{
+             return !(stock instanceof Domain.PreferredStock);
+        }
+
+        public run(stock:Domain.Stock, marketPrice: number){
             return stock.lastDividend/marketPrice;
         }
     }
 
-    export class CommonDividendYieldCalculator extends DividendYieldCalculator {
-        public static run(stock:Domain.PreferredStock, marketPrice: number){
-            return stock.fixedDividend*stock.parValue/marketPrice;
+    class PreferedDividendYieldCalculator extends DividendYieldCalculator {
+        public static Handles(stock:Domain.IStock):boolean{
+            return stock instanceof Domain.PreferredStock;
+        }
+        public run(stock:Domain.Stock, marketPrice: number){
+            if(!PreferedDividendYieldCalculator.Handles(stock)){
+                return 0;
+            }
+            return (<Domain.PreferredStock>stock).fixedDividend*stock.parValue/marketPrice;
         }
     }
 

@@ -1,33 +1,49 @@
 'use strict';
 var Services;
 (function (Services) {
+    class DividendYieldCalculatorFactory {
+        static create(stock) {
+            if (PreferedDividendYieldCalculator.Handles(stock)) {
+                return new PreferedDividendYieldCalculator();
+            }
+            return new CommonDividendYieldCalculator();
+        }
+    }
+    Services.DividendYieldCalculatorFactory = DividendYieldCalculatorFactory;
     class DividendYieldCalculator {
         isValid(marketPrice) {
             return marketPrice > 0;
         }
+        static Handles(stock) {
+            return false;
+        }
         run(stock, marketPrice) {
-            if (!this.isValid(marketPrice)) {
+            if (!stock || !this.isValid(marketPrice)) {
                 return 0;
             }
-            if (stock instanceof Domain.PreferredStock) {
-                return CommonDividendYieldCalculator.run(stock, marketPrice);
-            }
-            return PreferedDividendYieldCalculator.run(stock, marketPrice);
+            return DividendYieldCalculatorFactory.create(stock).run(stock, marketPrice);
         }
     }
     Services.DividendYieldCalculator = DividendYieldCalculator;
-    class PreferedDividendYieldCalculator extends DividendYieldCalculator {
-        static run(stock, marketPrice) {
+    class CommonDividendYieldCalculator extends DividendYieldCalculator {
+        static Handles(stock) {
+            return !(stock instanceof Domain.PreferredStock);
+        }
+        run(stock, marketPrice) {
             return stock.lastDividend / marketPrice;
         }
     }
-    Services.PreferedDividendYieldCalculator = PreferedDividendYieldCalculator;
-    class CommonDividendYieldCalculator extends DividendYieldCalculator {
-        static run(stock, marketPrice) {
+    class PreferedDividendYieldCalculator extends DividendYieldCalculator {
+        static Handles(stock) {
+            return stock instanceof Domain.PreferredStock;
+        }
+        run(stock, marketPrice) {
+            if (!PreferedDividendYieldCalculator.Handles(stock)) {
+                return 0;
+            }
             return stock.fixedDividend * stock.parValue / marketPrice;
         }
     }
-    Services.CommonDividendYieldCalculator = CommonDividendYieldCalculator;
     class PERatioCalculator {
         isValid(marketPrice) {
             return marketPrice > 0;
