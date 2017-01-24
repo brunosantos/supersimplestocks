@@ -88,4 +88,18 @@ namespace Services {
             return fundsTradedSum/quantitySum;
         }
     }
+
+    export class AllShareIndexCalculator {
+        public run(stocks:Array<Domain.Stock>){
+            if(!stocks.length){
+                return 0;
+            }
+            let stocksValueProduct = 1;   
+            for (let stock of stocks) {
+                stocksValueProduct*=stock.parValue;
+            }
+
+            return Math.pow(stocksValueProduct, 1/stocks.length);
+        }
+    }
 }

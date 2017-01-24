@@ -70,4 +70,8 @@ let last15Minutes = new Domain.DateRange(dateNowMinus15m,dateNow);
 let vWSP=tradeService.CalculateVWSP('ALE',last15Minutes);
 console.log('Volume Weighted Stock Price T-15 =',vWSP);
 
+console.log('b.	Calculate the GBCE All Share Index using the geometric mean of prices for all stocks');
+let allShareIdex=stockService.CalculateAllShareIndex();
+console.log('GBCE All Share Index =',allShareIdex);
+
 console.log('### main ended ### ');

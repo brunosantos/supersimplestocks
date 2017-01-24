@@ -6,6 +6,7 @@ namespace Data {
         Save(stock:Domain.Stock):IStockRepository;
         Get(stockSymbol:string):Domain.Stock;
         Count():number;
+        GetAll():Array<Domain.Stock>;
     }
     export class StockRepository implements IStockRepository {
         private stockData:Map<string,Domain.Stock>;
@@ -24,9 +25,8 @@ namespace Data {
         }
 
         public GetAll(){  
-            return this.stockData.values();
+            return Array.from(this.stockData.values());
         }
-
 
         public Count(){  
             return this.stockData.size;

@@ -60,20 +60,15 @@ namespace Services {
         }
     }
     
-    // export class AllShareIndexCalculatorService extends StockCalculatorService implements IStockCalculatorService  {
-    //     public run(stockSymbol:string, marketPrice: number){
-    //         if(!this.isValid(marketPrice)){
-    //             return 0;
-    //         }
-            
-    //         let stock = this.stockRepository.GetAll();
-    //         if(!stock){
-    //             return 0;
-    //         }
-
-    //         return new Services.PERatioCalculator().run(stock,marketPrice);
-    //     }
-    // }
+    export class AllShareIndexCalculatorService extends StockCalculatorService implements IStockCalculatorService  {
+        public run(){            
+            let stocks = this.stockRepository.GetAll();
+            if(!stocks){
+                return 0;
+            }
+            return new Services.AllShareIndexCalculator().run(stocks);
+        }
+    }
 
     export class StockService {
         protected _stockRepository:Data.IStockRepository;
@@ -97,5 +92,9 @@ namespace Services {
         public CalculatePERatio(stockSymbol:string, marketPrice: number){
             return new PERatioCalculatorService(this._stockRepository).run(stockSymbol,marketPrice);
         }  
+
+        public CalculateAllShareIndex(){
+            return new AllShareIndexCalculatorService(this._stockRepository).run();
+        }
     }
 }

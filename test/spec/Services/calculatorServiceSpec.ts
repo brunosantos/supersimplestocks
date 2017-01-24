@@ -62,6 +62,13 @@ describe("Given all GBCE stocks", function() {
             });
         });
     });
+    
+    describe("When I calculate the All Share Index", function() {
+        it("Should be 144.269", function() {            
+            let calculatorService = new Services.AllShareIndexCalculatorService(stockRepo);
+            expect(calculatorService.run()).toBe(144.2699905907214);
+        });
+    });
 });
 
 describe("Given a a set of saved Trades", function() {
