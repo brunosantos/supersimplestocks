@@ -55,9 +55,25 @@ namespace Services {
         }
 
         public run(stockSymbol:string, dateRange:Domain.DateRange){
-            return new Services.VWSPCalculator(this._tradeRepository).run(stockSymbol,dateRange);
+            let trades = this._tradeRepository.GetWithinDateRange(stockSymbol, dateRange);
+            return new Services.VWSPCalculator().run(stockSymbol,trades);
         }
     }
+    
+    // export class AllShareIndexCalculatorService extends StockCalculatorService implements IStockCalculatorService  {
+    //     public run(stockSymbol:string, marketPrice: number){
+    //         if(!this.isValid(marketPrice)){
+    //             return 0;
+    //         }
+            
+    //         let stock = this.stockRepository.GetAll();
+    //         if(!stock){
+    //             return 0;
+    //         }
+
+    //         return new Services.PERatioCalculator().run(stock,marketPrice);
+    //     }
+    // }
 
     export class StockService {
         protected _stockRepository:Data.IStockRepository;

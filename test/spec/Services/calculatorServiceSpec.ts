@@ -65,7 +65,7 @@ describe("Given all GBCE stocks", function() {
 });
 
 describe("Given a a set of saved Trades", function() {
-            let dateNow = new Date(Date.now());
+        let dateNow = new Date(Date.now());
         let dateNowMinus15m =  new Date(dateNow);
         dateNowMinus15m.setMinutes(dateNow.getMinutes()-15);
 

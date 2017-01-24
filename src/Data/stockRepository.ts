@@ -23,6 +23,11 @@ namespace Data {
             return this.stockData.get(stockSymbol);
         }
 
+        public GetAll(){  
+            return this.stockData.values();
+        }
+
+
         public Count(){  
             return this.stockData.size;
         }

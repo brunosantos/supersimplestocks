@@ -68,13 +68,7 @@ namespace Services {
     }
 
     export class VWSPCalculator {
-        private _tradeRepository:Data.TradeRepository;
-        constructor(tradeRepository:Data.TradeRepository) {
-            this._tradeRepository = tradeRepository;            
-        }
-
-        public run(stockSymbol:string, dateRange:Domain.DateRange){
-            let trades = this._tradeRepository.GetWithinDateRange(stockSymbol, dateRange);           
+        public run(stockSymbol:string, trades:Array<Domain.ITrade>){                      
             let fundsTradedSum = 0;
             let quantitySum = 0;
             for (let trade of trades) {
