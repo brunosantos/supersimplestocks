@@ -58,4 +58,28 @@ namespace Services {
             return new Services.VWSPCalculator(this._tradeRepository).run(stockSymbol,dateRange);
         }
     }
+
+    export class StockService {
+        protected _stockRepository:Data.IStockRepository;
+        constructor(stockRepository?:Data.IStockRepository) {
+            if(stockRepository){
+                this._stockRepository = stockRepository;
+            }
+            else{
+                this._stockRepository = new Data.StockRepository();
+            }
+        }
+
+        public Save(stock:Domain.Stock){
+            return this._stockRepository.Save(stock);
+        }  
+        
+        public CalculateDividendYield(stockSymbol:string, marketPrice: number){
+            return new DividendYieldCalculatorService(this._stockRepository).run(stockSymbol,marketPrice);
+        }      
+
+        public CalculatePERatio(stockSymbol:string, marketPrice: number){
+            return new PERatioCalculatorService(this._stockRepository).run(stockSymbol,marketPrice);
+        }  
+    }
 }
