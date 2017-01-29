@@ -5,5 +5,5 @@ Trello Stories and Tasks:
 
 
 Setup:
-# npm install
-# npm start
+- npm install
+- npm start
