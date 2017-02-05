@@ -6,7 +6,6 @@ Trello Stories and Tasks:
 
 Setup:
 - npm install  
-
 Run in node:  
 - npm run start:node  
 Run in browser:
