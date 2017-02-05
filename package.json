@@ -6,7 +6,7 @@
   "scripts": {
     "gulp": "gulp",
     "test": "tsc && jasmine ",
-    "test:browser": "tsc && npm run browserify:tests &&  lite-server",
+    "test:browser": "npm run browserify:tests &&  lite-server",
     "start": "tsc && concurrently \"tsc -w\" \"lite-server \" ",
     "typings": "typings",
     "tsc": "tsc",
@@ -15,10 +15,10 @@
     "compile": "npm run compile:common",
     "compile:browser": "npm run compile:common && npm run browserify",
     "compile:common": "tsc --outDir ./out --target es6 --module commonjs ./src/main.ts",
-    "browserify": "browserify out/main.js > out/bundle.js",
-    "browserify:tests": "browserify spec/Services/calculatorServiceSpec.js > spec/testsbundle.js",
+    "browserify": "browserify src/main.ts -p [ tsify --noImplicitAny ] > out/main.js ",
+    "browserify:tests": "browserify spec/Services/calculatorServiceSpec.ts -p [ tsify --noImplicitAny ] > spec/testsbundle.js",
     "start:node": "npm run compile:common && node ./out/main.js",
-    "start:browser": "npm run compile:common &&  lite-server"
+    "start:browser": "npm run browserify &&  lite-server"
   },
   "repository": {
     "type": "git",
