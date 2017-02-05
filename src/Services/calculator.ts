@@ -1,6 +1,7 @@
 'use strict'
+import * as Data from "../Data/data";
+import * as Domain from "../Domain/domain";
 
-namespace Services {
     export interface IStockCalculator {
         run(stock:Domain.Stock, marketPrice: number): number;
     }
@@ -102,4 +103,3 @@ namespace Services {
             return Math.pow(stocksValueProduct, 1/stocks.length);
         }
     }
-}

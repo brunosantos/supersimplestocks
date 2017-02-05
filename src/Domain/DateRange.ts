@@ -1,6 +1,4 @@
 'use strict';
-
-namespace Domain {
     export interface IDateRange {
         startDate:Date;
         endDate:Date;
@@ -10,4 +8,3 @@ namespace Domain {
         constructor(public startDate:Date, public endDate:Date) {
         }
     }    
-}

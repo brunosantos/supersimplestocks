@@ -1,5 +1,9 @@
 
 //iii.	Record a trade, with timestamp, quantity of shares, buy or sell indicator and trade price
+'use strict'
+import * as Data from "../../src/Data/data";
+import * as Domain from "../../src/Domain/domain";
+
 
 describe("Given a Stock symbol", function() {
     let stockSymbol = "TEA";

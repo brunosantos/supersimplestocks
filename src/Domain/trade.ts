@@ -1,6 +1,7 @@
 // iii.	Record a trade, with timestamp, quantity of shares, buy or sell indicator and trade price
 'use strict';
-namespace Domain {
+import { IDateRange } from './DateRange';
+
     export enum TradeType{ Buy, Sell}
 
     export interface ITrade {
@@ -38,4 +39,4 @@ namespace Domain {
             return this.price*this.quantity;
         }
     }
-}
+

@@ -1,3 +1,6 @@
+"use strict";
+import * as Data from "../../src/Data/data";
+import * as Domain from "../../src/Domain/domain";
 
 describe("Given all GBCE stocks", function() {
     let tea = new Domain.Stock('TEA', 0, 100);

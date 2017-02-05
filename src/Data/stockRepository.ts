@@ -1,7 +1,6 @@
 'use strict'
+import * as Domain from "../Domain/domain";
 
-// import _ from "lodash";
-namespace Data {
     export interface IStockRepository{
         Save(stock:Domain.Stock):IStockRepository;
         Get(stockSymbol:string):Domain.Stock;
@@ -32,4 +31,4 @@ namespace Data {
             return this.stockData.size;
         }
     }   
-}
+

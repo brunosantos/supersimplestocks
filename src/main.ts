@@ -1,3 +1,7 @@
+import * as Domain from './Domain/domain';
+import * as Data from "./Data/data";
+import * as Services from "./Services/services";
+ 
 
 console.log('### main started ###');
 let tea = new Domain.Stock('TEA', 0, 100);

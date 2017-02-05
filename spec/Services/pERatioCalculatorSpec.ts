@@ -1,3 +1,8 @@
+'use strict'
+import * as Data from "../../src/Data/data";
+import * as Domain from "../../src/Domain/domain";
+import * as Services from "../../src/Services/services";
+
 
 describe("Given a Stock symbol of type Common", function() {
     let simpleStock = new Domain.Stock('POP', 8, 100);

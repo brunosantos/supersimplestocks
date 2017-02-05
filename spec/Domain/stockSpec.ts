@@ -1,3 +1,5 @@
+'use strict'
+import * as Domain from "../../src/Domain/domain";
 
 describe("Given a Stock symbol", function() {
     it("When I create a stock of type Common", function() {

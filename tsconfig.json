@@ -2,16 +2,16 @@
     "compilerOptions": {
         "noImplicitAny": true,
         "target": "es6",
-        // "module": "commonjs",
+        "module": "commonjs",
         "removeComments": true,
         "preserveConstEnums": true,
-        // "outFile": "out/app.js",
+        // "outFile": "out/main.js",
         "sourceMap": true
     },
     "include": [
         "typings/index.d.ts",
         "src/**/*",
-        "test/**/*"
+        "spec/**/*"
     ],
     "exclude": [
      "node_modules",

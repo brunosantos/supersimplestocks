@@ -5,14 +5,17 @@
   "main": "main.js",
   "scripts": {
     "gulp": "gulp",
-    "test": "tsc && concurrently \"tsc -w\" \"lite-server \" ",
+    "test": "tsc && jasmine ",
     "start": "tsc && concurrently \"tsc -w\" \"lite-server \" ",
     "typings": "typings",
     "tsc": "tsc",
     "precompile": "npm run clean",
-    "clean": "rimraf lib/*",
-    "compile": "npm run compile:ts",
-    "compile:ts": "tsc --outDir ./out --module commonjs ./src/main.ts"
+    "clean": "rimraf out/*",
+    "compile": "npm run compile:node",
+    "compile:browser": "npm run compile:common && npm run browserify",
+    "compile:common": "tsc --outDir ./out --target es6 --module commonjs ./src/main.ts",
+    "browserify": "browserify out/main.js > out/bundle.js",
+    "start:node": "npm run compile:common && node ./out/main.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,7 @@
   },
   "homepage": "https://gitlab.com/bsan/SuperSimpleStocks#README",
   "devDependencies": {
+    "browserify": "^14.0.0",
     "concurrently": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.1.4",

@@ -1,9 +1,8 @@
 'use strict'
 
 // iii.	Record a trade, with timestamp, quantity of shares, buy or sell indicator and trade price
+import * as Domain from "../Domain/domain";
 
-// import _ from "lodash";
-namespace Data {
     export class TradeRepository {
         private tradeData:Array<Domain.ITrade>;
 
@@ -35,4 +34,3 @@ namespace Data {
             return filteredTradeData;
         }
     }
-}
