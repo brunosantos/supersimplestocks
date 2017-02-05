@@ -5,14 +5,14 @@ Trello Stories and Tasks:
 
 
 Setup:
-- npm install  
+npm install  
 Run in node:  
-- npm run start:node  
+npm run start:node  
 Run in browser:
-- npm run start:browser  
+npm run start:browser  
 Run Tests:
-- npm test  
+npm test  
 Run Tests in browser:  
-- npm run test:browser  
+npm run test:browser  
 
 
