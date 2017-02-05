@@ -6,27 +6,30 @@
   "scripts": {
     "gulp": "gulp",
     "test": "tsc && jasmine ",
+    "test:browser": "tsc && npm run browserify:tests &&  lite-server",
     "start": "tsc && concurrently \"tsc -w\" \"lite-server \" ",
     "typings": "typings",
     "tsc": "tsc",
     "precompile": "npm run clean",
     "clean": "rimraf out/*",
-    "compile": "npm run compile:node",
+    "compile": "npm run compile:common",
     "compile:browser": "npm run compile:common && npm run browserify",
     "compile:common": "tsc --outDir ./out --target es6 --module commonjs ./src/main.ts",
     "browserify": "browserify out/main.js > out/bundle.js",
-    "start:node": "npm run compile:common && node ./out/main.js"
+    "browserify:tests": "browserify spec/Services/calculatorServiceSpec.js > spec/testsbundle.js",
+    "start:node": "npm run compile:common && node ./out/main.js",
+    "start:browser": "npm run compile:common &&  lite-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/bsan/SuperSimpleStocks.git"
+    "url": "git+https://github.com/brunosantos/supersimplestocks.git"
   },
   "author": "bsan",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/bsan/SuperSimpleStocks/issues"
+    "url": "https://github.com/brunosantos/supersimplestocks/issues"
   },
-  "homepage": "https://gitlab.com/bsan/SuperSimpleStocks#README",
+  "homepage": "https://github.com/brunosantos/supersimplestocks#README",
   "devDependencies": {
     "browserify": "^14.0.0",
     "concurrently": "^3.1.0",
