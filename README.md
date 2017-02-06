@@ -4,15 +4,14 @@ Trello Stories and Tasks:
 [Stories and Tasks](https://trello.com/b/Z2YwET5U/supersimplestocks)
 
 
-Setup:
-npm install  
-Run in node:  
-npm run start:node  
-Run in browser:
-npm run start:browser  
-Run Tests:
-npm test  
-Run Tests in browser:  
-npm run test:browser  
-
+- Setup:  <br />
+npm install  <br />
+- Run in node:  <br />
+npm run start:node  <br />
+- Run in browser:  <br />
+npm run start:browser  <br />
+- Run Tests:  <br />
+npm test  <br />
+- Run Tests in browser:  <br />
+npm run test:browser   <br />
 
